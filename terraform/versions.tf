@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.0"
+    azuredevops = {
+      source  = "microsoft/azuredevops"
+      version = "~> 1.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
@@ -11,6 +11,10 @@ terraform {
     helm = {
       source  = "hashicorp/helm"
       version = "~> 3.0"
+    }
+    jinja = {
+      source  = "NikolaLohinski/jinja"
+      version = "~> 2.0"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
