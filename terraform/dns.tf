@@ -20,6 +20,6 @@ resource "cloudflare_dns_record" "kubernetes_dashboard" {
   ttl = local.dns_ttl_seconds
   proxied = local.dns_records_proxy_enabled
   type = "A"
-  content = module.network.ingress_nginx_service_loadbalancer_ip
+  content = local.external_ingress_ip
   comment = local.dns_records_default_comment
 }
