@@ -2,8 +2,8 @@ module "kubernetes_dashboard" {
   count = local.kubernetes_dashboard_enabled ? 1 : 0
   source = "./modules/_k8sdash"
   depends_on = [
-    data.terraform_remote_state.network_context,
-    data.terraform_remote_state.storage_context
+    data.kubernetes_config_map.network_context,
+    data.kubernetes_config_map.storage_context
   ]
 
   namespace = local.kubernetes_dashboard_namespace
