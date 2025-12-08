@@ -45,7 +45,7 @@ stages:
         steps:
           - template: apply-terraform.yml@templates
             parameters:
-              kubeconfigArtifactName: "kubeconfigFile"
+              kubeconfigArtifactName: "kubeConfig"
               kubeconfigArtifactSourcePipeline: "cluster-base"
               terraformPlatformRepository: "self"
               terraformPlatformRepositoryTerraformPath: "terraform"
