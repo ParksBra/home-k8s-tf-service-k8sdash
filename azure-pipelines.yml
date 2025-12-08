@@ -55,10 +55,10 @@ stages:
             - name: TF_VAR_azuredevops_library_project_id
               value: "$(System.TeamProjectId)"
             - name: AZDO_PERSONAL_ACCESS_TOKEN
-              value: $(System.AccessToken)
+              value: "$(System.AccessToken)"
             - name: AZDO_ORG_SERVICE_URL
-              value: $(System.TeamFoundationCollectionUri)
+              value: "$(System.TeamFoundationCollectionUri)"
             - name: CLOUDFLARE_API_TOKEN
-              value: $(home-k8s-terraform-provider-cloudflare-api-token)
+              value: "$(home-k8s-terraform-provider-cloudflare-api-token)"
           terraformPlanDestroy: false
           terraformApply: true
