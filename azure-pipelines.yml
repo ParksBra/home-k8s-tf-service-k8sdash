@@ -73,10 +73,6 @@ stages:
               terraformBackendNamespace: "kube-system"
               terraformBackendSuffix: "service-k8sdash"
               terraformExtraEnvironmentVariables:
-                - name: TF_VAR_azuredevops_library_name
-                  value: "home-k8s-cluster"
-                - name: TF_VAR_azuredevops_library_project_id
-                  value: "$(System.TeamProjectId)"
                 - name: AZDO_PERSONAL_ACCESS_TOKEN
                   value: "$(System.AccessToken)"
                 - name: AZDO_ORG_SERVICE_URL
