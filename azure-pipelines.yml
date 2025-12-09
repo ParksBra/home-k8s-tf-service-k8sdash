@@ -50,30 +50,25 @@ parameters:
       - "destroy"
     default: "normal"
 
+variables:
+  - group: home-k8s-cluster
+  - group: home-k8s-terraform
+
 stages:
-  - stage: "serviceK8sdashDeployment"
-    displayName: "Kubernetes Dashboard Service Deployment"
-    variables:
-      - group: home-k8s-cluster
-      - group: home-k8s-terraform
-    jobs:
-      - job: "deployServiceK8sdash"
-        displayName: "Deploy Kubernetes Dashboard Service"
-        steps:
-          - template: apply-terraform.yml@templates
-            parameters:
-              kubeconfigArtifactFileName: "kubeconfig"
-              kubeconfigArtifactName: "kubeConfig"
-              kubeconfigArtifactSourcePipeline: "cluster-base"
-              terraformRepository: "self"
-              terraformRepositoryTerraformPath: "terraform"
-              terraformVersion: "latest"
-              terraformBackendNamespace: "kube-system"
-              terraformBackendSuffix: "service-k8sdash"
-              terraformVariables: []
-              terraformExtraEnvironmentVariables:
-                - name: CLOUDFLARE_API_TOKEN
-                  value: "$(home-k8s-terraform-provider-cloudflare-api-token)"
-              terraformValidate: ${{ parameters.terraformValidate }}
-              terraformPlanDestroy: ${{ eq(parameters.terraformPlanMode, 'destroy') }}
-              terraformApply: ${{ parameters.terraformApply }}
+  - template: terraform.yml@templates
+    parameters:
+      kubeconfigArtifactFileName: "kubeconfig"
+      kubeconfigArtifactName: "kubeConfig"
+      kubeconfigArtifactSourcePipeline: "cluster-base"
+      terraformRepository: "self"
+      terraformRepositoryTerraformPath: "terraform"
+      terraformVersion: "latest"
+      terraformBackendNamespace: "kube-system"
+      terraformBackendSuffix: "service-k8sdash"
+      terraformVariables: []
+      terraformExtraEnvironmentVariables:
+        - name: CLOUDFLARE_API_TOKEN
+          value: "$(home-k8s-terraform-provider-cloudflare-api-token)"
+      terraformValidate: ${{ parameters.terraformValidate }}
+      terraformPlanDestroy: ${{ eq(parameters.terraformPlanMode, 'destroy') }}
+      terraformApply: ${{ parameters.terraformApply }}
