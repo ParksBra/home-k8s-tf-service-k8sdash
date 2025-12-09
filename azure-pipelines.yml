@@ -5,7 +5,6 @@ trigger:
 
 pool:
   name: 'local-lab'
-  vmImage: 'ubuntu-latest'
 
 resources:
   pipelines:
@@ -37,11 +36,6 @@ parameters:
     type: boolean
     default: true
 
-  - name: terraformApply
-    displayName: 'Enable Terraform Apply After Plan'
-    type: boolean
-    default: true
-
   - name: terraformPlanMode
     displayName: 'Terraform Plan Mode'
     type: string
@@ -49,6 +43,12 @@ parameters:
       - "normal"
       - "destroy"
     default: "normal"
+
+  - name: terraformApply
+    displayName: 'Enable Terraform Apply After Plan (Manual Triggers Only)'
+    type: boolean
+    default: false
+
 
 variables:
   - group: home-k8s-cluster
