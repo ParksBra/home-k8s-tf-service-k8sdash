@@ -14,12 +14,18 @@ resources:
     - pipeline: platform-network
       source: ParksBra.home-k8s-platform-network
       trigger:
+        branches:
+          include:
+          - main
         stages:
           - applyTerraform
 
     - pipeline: platform-storage
       source: ParksBra.home-k8s-platform-storage
       trigger:
+        branches:
+          include:
+          - main
         stages:
           - applyTerraform
 
