@@ -131,3 +131,9 @@ variable "ingress_host_address" {
   type        = string
   default     = "kubernetes-dashboard.local"
 }
+
+variable "ingress_include_default_annotations" {
+  description = "Whether to include default ingress annotations for the Kubernetes Dashboard ingress."
+  type        = bool
+  default     = true
+}

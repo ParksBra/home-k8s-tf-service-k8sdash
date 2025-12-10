@@ -88,7 +88,7 @@ resource "helm_release" "application" {
       },
       {
         name  = "app.ingress.useDefaultAnnotations"
-        value = tostring(false) # Rely on user-provided annotations
+        value = tostring(var.ingress_include_default_annotations)
       },
       {
         name  = "app.ingress.tls.enabled"
