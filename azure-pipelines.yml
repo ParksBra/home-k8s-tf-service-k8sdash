@@ -15,13 +15,13 @@ resources:
       source: ParksBra.home-k8s-platform-network
       trigger:
         stages:
-          - applyTerraformLatest
+          - applyTerraform
 
     - pipeline: platform-storage
       source: ParksBra.home-k8s-platform-storage
       trigger:
         stages:
-          - applyTerraformLatest
+          - applyTerraform
 
   repositories:
     - repository: templates
@@ -48,7 +48,6 @@ parameters:
     displayName: 'Enable Terraform Apply After Plan (Manual Triggers Only)'
     type: boolean
     default: false
-
 
 variables:
   - group: home-k8s-cluster
